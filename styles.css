@@ -443,25 +443,6 @@ section { scroll-margin-top: 72px; }
     linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
 }
 
-.photo-placeholder {
-  position: relative;
-  width: 100%;
-  padding: 34px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.photo:has(.photo-placeholder)::after {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border: 1px dashed rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
-  pointer-events: none;
-}
-.photo-label { font-size: 11px; letter-spacing: 0.24em; color: var(--cyan); font-weight: 700; }
-.photo-note { font-size: 16px; color: var(--label); line-height: 1.5; max-width: 340px; }
-
 /* ---------- Services ---------- */
 
 .services-grid {

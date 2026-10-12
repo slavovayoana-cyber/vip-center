@@ -31,9 +31,11 @@ Branch: **main**, папка **/ (root)** → Save.
 
 ## Какво още трябва от клиента
 
-- [ ] Снимки за двете полета „СНИМКА“ (hero и „Защо нас“). Сложете ги в папка
-      `images/` и заменете `<div class="photo-placeholder">…</div>` с
-      `<img src="images/hero.jpg" alt="…">`.
-- [ ] Линк към реалната Facebook страница (търсете `TODO` в `index.html`).
+- [ ] Реални снимки от автомивката. Сега има временни безплатни снимки от Pexels
+      ([кола](https://www.pexels.com/photo/cars-lights-car-vehicle-1729993/),
+      [четка](https://www.pexels.com/photo/a-close-up-shot-of-a-person-brushing-a-car-6873020/)).
+      Заменете файловете в `images/` със същите имена и размери
+      (`hero-*.jpg` е 4:5, `why-*.jpg` е 5:4, `og.jpg` е 1200×630 за споделяне във Facebook).
 - [ ] Потвърждение на рейтинга в Google (4.5 ★ / 64 отзива) и на цените.
 - [ ] Домейн (по желание), напр. `cleansing-vip.bg`: Settings → Pages → Custom domain.
+      След смяна на домейна обновете адреса в `og:image` в `index.html`.
