@@ -1,6 +1,6 @@
-# CLEANSING VIP CENTER — уебсайт
+# VIP CLEANING CENTER — уебсайт
 
-Едностраничен сайт за автомивка CLEANSING VIP CENTER, Стара Загора.
+Едностраничен сайт за автомивка VIP CLEANING CENTER, Стара Загора.
 Чист HTML/CSS/JS без build стъпка: хоства се директно от GitHub Pages.
 
 ## Файлове
@@ -43,6 +43,6 @@ Branch: **main**, папка **/ (root)** → Save.
       `why-{600,800,1100}` (5:4), всеки като `.jpg` и `.webp`, и `og.jpg` (1200×630, за Facebook).
 - [ ] Потвърждение на отговорите във „Въпроси“ (раздел FAQ в `index.html`).
 - [ ] Потвърждение на рейтинга в Google (4.5 ★ / 64 отзива) и на цените.
-- [ ] Домейн (по желание), напр. `cleansing-vip.bg`: Settings → Pages → Custom domain.
+- [ ] Домейн (по желание), напр. `vipcleaning.bg`: Settings → Pages → Custom domain.
       След смяна на домейна обновете адреса в `canonical`, `og:url`, `og:image` и JSON-LD
       в `index.html`, в `sitemap.xml` и пътищата `/vip-center/` в `404.html`.

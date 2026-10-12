@@ -1,4 +1,4 @@
-/* CLEANSING VIP CENTER — стилове */
+/* VIP CLEANING CENTER — стилове */
 
 /* Шрифтове (локално, без заявки към Google) */
 @font-face {
@@ -249,6 +249,7 @@ section { scroll-margin-top: 72px; }
 
 .logo-text { display: flex; flex-direction: column; line-height: 1; }
 .logo-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: 0.06em; }
+.logo-vip { color: var(--gold); }
 .logo-sub { font-size: 10px; letter-spacing: 0.32em; color: var(--gold); font-weight: 700; margin-top: 4px; }
 .logo-name-lg { font-size: 20px; }
 .logo-sub-lg { font-size: 11px; margin-top: 6px; }
@@ -1307,6 +1308,7 @@ section { scroll-margin-top: 72px; }
   .nav-mobile { display: none !important; }
 
   .faq-grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+  .footer-bottom .footer-link-muted { display: none; } /* плаващият бутон "нагоре" го замества */
   .faq-head { position: sticky; top: 110px; }
 }
 

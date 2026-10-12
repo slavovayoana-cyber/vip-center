@@ -1,4 +1,4 @@
-// CLEANSING VIP CENTER — поведение на страницата
+// VIP CLEANING CENTER — поведение на страницата
 
 (function () {
   'use strict';
