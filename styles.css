@@ -1308,7 +1308,8 @@ section { scroll-margin-top: 72px; }
   .nav-mobile { display: none !important; }
 
   .faq-grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
-  .footer-bottom .footer-link-muted { display: none; } /* плаващият бутон "нагоре" го замества */
+  .footer-bottom { padding-right: 64px; } /* място за плаващия бутон "нагоре" */
+  .footer-bottom .footer-link-muted { display: none; } /* плаващият бутон го замества */
   .faq-head { position: sticky; top: 110px; }
 }
 
