@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Страницата не е намерена — CLEANSING VIP CENTER</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0C0F">
+<style>
+  @font-face {
+    font-family: 'Unbounded';
+    font-weight: 500 800;
+    font-display: swap;
+    src: url(/vip-center/fonts/unbounded-cyrillic.woff2) format('woff2');
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  @font-face {
+    font-family: 'Unbounded';
+    font-weight: 500 800;
+    font-display: swap;
+    src: url(/vip-center/fonts/unbounded-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+2000-206F, U+20AC;
+  }
+  :root { --bg: #0A0C0F; --text: #EEF2F5; --muted: #9AA6B2; --cyan: #22C7E8; --cyan-light: #7FE3F5; --gold: #D4AF6A; --ink: #04131A; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    display: grid;
+    place-items: center;
+    padding: 24px 20px;
+    background:
+      radial-gradient(60% 50% at 80% 10%, rgba(34, 199, 232, 0.18), transparent 70%),
+      radial-gradient(40% 40% at 0% 90%, rgba(14, 143, 176, 0.14), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-feature-settings: "locl" 0;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+  }
+  main { max-width: 560px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .drop {
+    width: 56px; height: 56px; border-radius: 50% 50% 50% 6px; transform: rotate(-45deg);
+    background: linear-gradient(135deg, var(--cyan-light), #0E8FB0);
+    box-shadow: 0 0 30px rgba(34, 199, 232, 0.5);
+  }
+  .code {
+    margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 800; line-height: 1;
+    font-size: clamp(88px, 22vw, 160px);
+    background: linear-gradient(100deg, var(--cyan-light), var(--cyan) 45%, var(--gold));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  h1 { margin: 0; font-family: 'Unbounded', sans-serif; font-size: clamp(22px, 4vw, 30px); font-weight: 700; }
+  p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
+  a.btn { padding: 15px 24px; border-radius: 14px; font-weight: 800; font-size: 15px; text-decoration: none; }
+  a.primary { background: linear-gradient(135deg, #4ED6F0, #16AFD2); color: var(--ink); }
+  a.ghost { border: 1px solid rgba(255, 255, 255, 0.18); color: var(--text); }
+  a.ghost:hover { border-color: var(--cyan); }
+</style>
+</head>
+<body>
+<main>
+  <span class="drop" aria-hidden="true"></span>
+  <p class="code">404</p>
+  <h1>Тази страница я няма</h1>
+  <p>Може би линкът е грешен или страницата е преместена. Върнете се в началото или ни се обадете директно.</p>
+  <div class="actions">
+    <a class="btn primary" id="home" href="/vip-center/">Към началото</a>
+    <a class="btn ghost" href="tel:+359898781205">089 878 1205</a>
+  </div>
+</main>
+<script>
+  // Работи и на github.io/vip-center/, и на собствен домейн.
+  if (location.pathname.indexOf('/vip-center/') !== 0) document.getElementById('home').href = '/';
+</script>
+</body>
+</html>

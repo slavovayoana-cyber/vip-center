@@ -82,10 +82,28 @@
     }
   }
 
+  // [отваряне, затваряне] в минути от полунощ; null = почивен ден.
+  var schedule = [null, [510, 1050], [510, 1050], [510, 1050], [510, 1050], [510, 1050], [540, 1050]];
+  var dayNames = ['в неделя', 'в понеделник', 'във вторник', 'в сряда', 'в четвъртък', 'в петък', 'в събота'];
+
+  function hhmm(mins) {
+    var h = Math.floor(mins / 60), m = mins % 60;
+    return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+  }
+
   var now = sofiaNow();
-  var open = false;
-  if (now.day >= 1 && now.day <= 5) open = now.mins >= 510 && now.mins < 1050; // 08:30 – 17:30
-  if (now.day === 6) open = now.mins >= 540 && now.mins < 1050;               // 09:00 – 17:30
+  var today = schedule[now.day];
+  var open = !!today && now.mins >= today[0] && now.mins < today[1];
+
+  // Кога отваряме следващия път (за текста в началото на страницата).
+  function nextOpening() {
+    if (today && now.mins < today[0]) return 'днес в ' + hhmm(today[0]);
+    for (var i = 1; i <= 7; i++) {
+      var d = (now.day + i) % 7;
+      if (schedule[d]) return (i === 1 ? 'утре' : dayNames[d]) + ' в ' + hhmm(schedule[d][0]);
+    }
+    return '';
+  }
 
   var todayKey = now.day === 0 ? 'sunday' : now.day === 6 ? 'saturday' : 'weekday';
   var todayRow = document.querySelector('.hours-row[data-day="' + todayKey + '"]');
@@ -96,6 +114,65 @@
     status.querySelector('.open-status-text').textContent = open ? 'Отворено сега' : 'Затворено в момента';
     status.style.setProperty('--status-color', open ? 'var(--green)' : 'var(--amber)');
     status.hidden = false;
+  }
+
+  var heroStatus = document.getElementById('hero-status');
+  if (heroStatus) {
+    heroStatus.classList.add(open ? 'is-open' : 'is-closed');
+    heroStatus.querySelector('.hero-status-text').textContent = open
+      ? 'Отворено сега · до ' + hhmm(today[1])
+      : 'Затворено · отваряме ' + nextOpening();
+  }
+
+  // ---------- Хедър при скрол, лента за прогрес, бутон "нагоре" ----------
+  var header = document.querySelector('.site-header');
+  var toTop = document.querySelector('.to-top');
+  var ticking = false;
+
+  function onScroll() {
+    var y = window.scrollY;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    header.classList.toggle('is-scrolled', y > 10);
+    header.style.setProperty('--progress', max > 0 ? Math.min(y / max, 1).toFixed(4) : '0');
+    if (toTop) toTop.classList.toggle('is-visible', y > 800);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(onScroll);
+    }
+  }, { passive: true });
+  onScroll();
+
+  // ---------- Активна секция в менюто ----------
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-desktop a[href^="#"]'));
+  if ('IntersectionObserver' in window && navLinks.length) {
+    var byId = {};
+    navLinks.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          var active = a === byId[entry.target.id];
+          a.classList.toggle('is-active', active);
+          if (active) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('main section[id]').forEach(function (sec) { spy.observe(sec); });
+  }
+
+  // ---------- Светлина под курсора върху картите ----------
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.spotlight').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
   }
 
   // ---------- Година във футъра ----------
