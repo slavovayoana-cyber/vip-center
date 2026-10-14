@@ -653,8 +653,20 @@ section { scroll-margin-top: 72px; }
 }
 .extra-bar-name { font-size: 18px; font-weight: 700; }
 .extra-bar-desc { font-size: 14px; color: var(--muted); }
-.extra-price { font-size: 15px; white-space: nowrap; color: var(--muted); }
-.extra-price strong { font-family: var(--font-display); color: var(--cyan-light); font-size: 22px; font-weight: 600; }
+.extra-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(34, 199, 232, 0.4);
+  color: var(--cyan-light);
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.extra-cta:hover { color: #FFFFFF; border-color: var(--cyan); background: rgba(34, 199, 232, 0.08); }
 
 /* ---------- Why us ---------- */
 
@@ -784,6 +796,7 @@ section { scroll-margin-top: 72px; }
 .contact-row { display: flex; gap: 16px; }
 .contact-row-text { display: flex; flex-direction: column; gap: 4px; }
 .contact-row address { font-size: 16px; line-height: 1.5; color: var(--text); }
+.address-note { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
 .muted-label { font-size: 13px; color: var(--muted-2); }
 .contact-phone { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text); }
 .contact-phone:hover { color: var(--cyan); }
