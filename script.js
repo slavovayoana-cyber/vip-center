@@ -226,24 +226,35 @@
     range.addEventListener('input', function () { setPos(Number(range.value)); });
 
     var largest = function (srcset) { return srcset.split(',').pop().trim().split(' ')[0]; };
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.ba-tab'));
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        tabs.forEach(function (t) {
-          var on = t === tab;
-          t.classList.toggle('is-active', on);
-          t.setAttribute('aria-pressed', String(on));
-        });
-        var label = tab.getAttribute('data-label').toLowerCase();
-        beforeImg.srcset = tab.getAttribute('data-before');
-        beforeImg.src = largest(beforeImg.srcset);
-        beforeImg.alt = 'Преди почистване: ' + label;
-        afterImg.srcset = tab.getAttribute('data-after');
-        afterImg.src = largest(afterImg.srcset);
-        afterImg.alt = 'След почистване: ' + label;
-        setPos(50);
+    var thumbs = Array.prototype.slice.call(document.querySelectorAll('.ba-thumb'));
+    var captionLabel = document.querySelector('.ba-caption-label');
+    var captionCount = document.querySelector('.ba-caption-count');
+    var current = 0;
+
+    var show = function (index) {
+      current = (index + thumbs.length) % thumbs.length;
+      var thumb = thumbs[current];
+      thumbs.forEach(function (t) {
+        var on = t === thumb;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-pressed', String(on));
       });
+      var label = thumb.getAttribute('data-label');
+      beforeImg.srcset = thumb.getAttribute('data-before');
+      beforeImg.src = largest(beforeImg.srcset);
+      beforeImg.alt = 'Преди почистване: ' + label.toLowerCase();
+      afterImg.srcset = thumb.getAttribute('data-after');
+      afterImg.src = largest(afterImg.srcset);
+      afterImg.alt = 'След почистване: ' + label.toLowerCase();
+      captionLabel.textContent = label;
+      captionCount.textContent = (current + 1) + ' / ' + thumbs.length;
+      setPos(50);
+    };
+    thumbs.forEach(function (thumb, i) {
+      thumb.addEventListener('click', function () { show(i); });
     });
+    document.querySelector('.ba-prev').addEventListener('click', function () { show(current - 1); });
+    document.querySelector('.ba-next').addEventListener('click', function () { show(current + 1); });
 
     // Кратко "помръдване" на линията, за да се види, че се плъзга.
     if (!reduceMotion && 'IntersectionObserver' in window) {

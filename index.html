@@ -191,8 +191,8 @@
       <div class="hero-frame" aria-hidden="true"></div>
       <div class="photo photo-hero">
         <picture>
-          <source type="image/webp" srcset="images/hero-600.webp 600w, images/hero-800.webp 800w" sizes="(max-width: 960px) calc(100vw - 40px), 560px">
-          <img src="images/hero-800.jpg" srcset="images/hero-600.jpg 600w, images/hero-800.jpg 800w" sizes="(max-width: 960px) calc(100vw - 40px), 560px" width="800" height="1000" alt="Седалка след почистване, отблизо" fetchpriority="high">
+          <source type="image/webp" srcset="images/hero-600.webp 600w, images/hero-800.webp 800w, images/hero-1100.webp 1100w" sizes="(max-width: 960px) calc(100vw - 40px), 560px">
+          <img src="images/hero-1100.jpg" srcset="images/hero-600.jpg 600w, images/hero-800.jpg 800w, images/hero-1100.jpg 1100w" sizes="(max-width: 960px) calc(100vw - 40px), 560px" width="1100" height="1375" alt="Лъскав черен автомобил с отблясъци от осветлението" fetchpriority="high">
         </picture>
         <span class="photo-shine" aria-hidden="true"></span>
       </div>
@@ -393,7 +393,7 @@
         <p class="eyebrow">Преди / След</p>
         <h2>Резултатите говорят сами</h2>
       </div>
-      <p class="section-lead">Плъзнете линията върху снимката, за да видите разликата.</p>
+      <p class="section-lead">Плъзнете линията върху снимката, за да видите разликата. Отдолу изберете друг пример.</p>
     </div>
     <div class="ba-wrap" data-reveal>
       <div class="ba" style="--pos: 50%">
@@ -404,12 +404,32 @@
         <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Плъзнете, за да сравните преди и след">
         <span class="ba-handle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="ba-tabs" aria-label="Изберете пример">
-        <button type="button" class="ba-tab is-active" aria-pressed="true" data-before="images/results/rear-seat-before-700.webp 700w, images/results/rear-seat-before-1200.webp 1200w" data-after="images/results/rear-seat-after-700.webp 700w, images/results/rear-seat-after-1200.webp 1200w" data-label="Задна седалка">Задна седалка</button>
-        <button type="button" class="ba-tab" aria-pressed="false" data-before="images/results/seat-detail-before-700.webp 700w, images/results/seat-detail-before-1200.webp 1200w" data-after="images/results/seat-detail-after-700.webp 700w, images/results/seat-detail-after-1200.webp 1200w" data-label="Седалка отблизо">Седалка отблизо</button>
-        <button type="button" class="ba-tab" aria-pressed="false" data-before="images/results/headrest-before-700.webp 700w, images/results/headrest-before-1200.webp 1200w" data-after="images/results/headrest-after-700.webp 700w, images/results/headrest-after-1200.webp 1200w" data-label="Облегалка за глава">Облегалка за глава</button>
-        <button type="button" class="ba-tab" aria-pressed="false" data-before="images/results/console-before-700.webp 700w, images/results/console-before-1200.webp 1200w" data-after="images/results/console-after-700.webp 700w, images/results/console-after-1200.webp 1200w" data-label="Подлакътник">Подлакътник</button>
-        <button type="button" class="ba-tab" aria-pressed="false" data-before="images/results/door-before-700.webp 700w, images/results/door-before-1200.webp 1200w" data-after="images/results/door-after-700.webp 700w, images/results/door-after-1200.webp 1200w" data-label="Кора на вратата">Кора на вратата</button>
+      <div class="ba-nav">
+        <button type="button" class="round-btn ba-prev" aria-label="Предишен пример">←</button>
+        <p class="ba-caption" aria-live="polite"><span class="ba-caption-label">Задна седалка</span><span class="ba-caption-count">1 / 5</span></p>
+        <button type="button" class="round-btn ba-next" aria-label="Следващ пример">→</button>
+      </div>
+      <div class="ba-thumbs">
+        <button type="button" class="ba-thumb is-active" aria-pressed="true" aria-label="Пример 1: Задна седалка" data-before="images/results/rear-seat-before-700.webp 700w, images/results/rear-seat-before-1200.webp 1200w" data-after="images/results/rear-seat-after-700.webp 700w, images/results/rear-seat-after-1200.webp 1200w" data-label="Задна седалка">
+          <img src="images/results/rear-seat-thumb.webp" alt="" width="300" height="200" loading="lazy">
+          <span>Задна седалка</span>
+        </button>
+        <button type="button" class="ba-thumb" aria-pressed="false" aria-label="Пример 2: Седалка отблизо" data-before="images/results/seat-detail-before-700.webp 700w, images/results/seat-detail-before-1200.webp 1200w" data-after="images/results/seat-detail-after-700.webp 700w, images/results/seat-detail-after-1200.webp 1200w" data-label="Седалка отблизо">
+          <img src="images/results/seat-detail-thumb.webp" alt="" width="300" height="200" loading="lazy">
+          <span>Седалка отблизо</span>
+        </button>
+        <button type="button" class="ba-thumb" aria-pressed="false" aria-label="Пример 3: Облегалка за глава" data-before="images/results/headrest-before-700.webp 700w, images/results/headrest-before-1200.webp 1200w" data-after="images/results/headrest-after-700.webp 700w, images/results/headrest-after-1200.webp 1200w" data-label="Облегалка за глава">
+          <img src="images/results/headrest-thumb.webp" alt="" width="300" height="200" loading="lazy">
+          <span>Облегалка за глава</span>
+        </button>
+        <button type="button" class="ba-thumb" aria-pressed="false" aria-label="Пример 4: Подлакътник" data-before="images/results/console-before-700.webp 700w, images/results/console-before-1200.webp 1200w" data-after="images/results/console-after-700.webp 700w, images/results/console-after-1200.webp 1200w" data-label="Подлакътник">
+          <img src="images/results/console-thumb.webp" alt="" width="300" height="200" loading="lazy">
+          <span>Подлакътник</span>
+        </button>
+        <button type="button" class="ba-thumb" aria-pressed="false" aria-label="Пример 5: Кора на вратата" data-before="images/results/door-before-700.webp 700w, images/results/door-before-1200.webp 1200w" data-after="images/results/door-after-700.webp 700w, images/results/door-after-1200.webp 1200w" data-label="Кора на вратата">
+          <img src="images/results/door-thumb.webp" alt="" width="300" height="200" loading="lazy">
+          <span>Кора на вратата</span>
+        </button>
       </div>
     </div>
     <div class="half-row" data-reveal>
