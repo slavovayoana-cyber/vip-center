@@ -175,6 +175,93 @@
     });
   }
 
+  // ---------- Преди / След ----------
+  var ba = document.querySelector('.ba');
+  if (ba) {
+    var range = ba.querySelector('.ba-range');
+    var beforeImg = ba.querySelector('.ba-before');
+    var afterImg = ba.querySelector('.ba-after');
+    var dragging = false;
+
+    var setPos = function (p) {
+      p = Math.max(0, Math.min(100, p));
+      ba.style.setProperty('--pos', p + '%');
+      range.value = String(Math.round(p));
+    };
+    var fromPointer = function (e) {
+      var r = ba.getBoundingClientRect();
+      setPos((e.clientX - r.left) / r.width * 100);
+    };
+
+    // С пръст линията тръгва едва при движение (или при тап), за да не подскача,
+    // когато човек просто скролва страницата през снимката.
+    var moved = false;
+    var startX = 0, startY = 0;
+    ba.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startY = e.clientY;
+      ba.setPointerCapture(e.pointerId);
+      if (e.pointerType === 'mouse') fromPointer(e);
+    });
+    ba.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      if (!moved && e.pointerType !== 'mouse') {
+        var dx = Math.abs(e.clientX - startX), dy = Math.abs(e.clientY - startY);
+        if (dx < 4 && dy < 4) return;
+        if (dy > dx) { dragging = false; return; } // вертикално = скрол на страницата
+      }
+      moved = true;
+      fromPointer(e);
+    });
+    ba.addEventListener('pointerup', function (e) {
+      if (dragging && !moved && e.pointerType !== 'mouse') fromPointer(e);
+      dragging = false;
+    });
+    ba.addEventListener('pointercancel', function () { dragging = false; });
+    range.addEventListener('input', function () { setPos(Number(range.value)); });
+
+    var largest = function (srcset) { return srcset.split(',').pop().trim().split(' ')[0]; };
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.ba-tab'));
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-pressed', String(on));
+        });
+        var label = tab.getAttribute('data-label').toLowerCase();
+        beforeImg.srcset = tab.getAttribute('data-before');
+        beforeImg.src = largest(beforeImg.srcset);
+        beforeImg.alt = 'Преди почистване: ' + label;
+        afterImg.srcset = tab.getAttribute('data-after');
+        afterImg.src = largest(afterImg.srcset);
+        afterImg.alt = 'След почистване: ' + label;
+        setPos(50);
+      });
+    });
+
+    // Кратко "помръдване" на линията, за да се види, че се плъзга.
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      var hint = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        hint.disconnect();
+        var start = null;
+        var step = function (t) {
+          if (dragging) return;
+          if (start === null) start = t;
+          var k = (t - start) / 1400;
+          if (k >= 1) { setPos(50); return; }
+          setPos(50 + Math.sin(k * Math.PI * 2) * 14 * (1 - k));
+          window.requestAnimationFrame(step);
+        };
+        window.setTimeout(function () { window.requestAnimationFrame(step); }, 400);
+      }, { threshold: 0.5 });
+      hint.observe(ba);
+    }
+  }
+
   // ---------- Година във футъра ----------
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
