@@ -83,7 +83,9 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  /* Дизайнът е с основните кирилски форми, не с българските (в, д, г, ш…). */
+  /* Дизайнът е с основните кирилски форми, не с българските (в, д, т, ш…).
+     Safari пренебрегва тази настройка, затова в самите шрифтове (fonts/*-cyrillic.woff2)
+     българските форми са изключени. Настройката остава за други шрифтове. */
   font-feature-settings: "locl" 0;
 }
 
@@ -1474,7 +1476,10 @@ section { scroll-margin-top: 72px; }
     z-index: 60;
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
     background: linear-gradient(180deg, rgba(10, 12, 15, 0), rgba(10, 12, 15, 0.95) 40%);
+    transition: transform .3s ease, opacity .3s ease;
   }
+  /* Показва се, след като бутонът "Обади се" в началото излезе от екрана. */
+  .js .sticky-call:not(.is-visible) { transform: translateY(110%); opacity: 0; pointer-events: none; }
   .sticky-call a {
     display: flex;
     align-items: center;
@@ -1500,6 +1505,10 @@ section { scroll-margin-top: 72px; }
 }
 
 @media (max-width: 560px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+  .photo-hero { aspect-ratio: 1 / 1; }
+
   .program-list { grid-template-columns: 1fr; }
 
   .ba { aspect-ratio: 4 / 3; border-radius: 20px; }

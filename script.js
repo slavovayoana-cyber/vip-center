@@ -276,6 +276,20 @@
     }
   }
 
+  // ---------- Залепеният бутон "Обади се" на телефон ----------
+  // Не дублира бутона в началото: появява се, когато той излезе от екрана.
+  var sticky = document.querySelector('.sticky-call');
+  var heroActions = document.querySelector('.hero-actions');
+  if (sticky && heroActions) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        sticky.classList.toggle('is-visible', !entries[0].isIntersecting);
+      }).observe(heroActions);
+    } else {
+      sticky.classList.add('is-visible');
+    }
+  }
+
   // ---------- Година във футъра ----------
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
