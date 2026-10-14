@@ -40,10 +40,13 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
+    // Първо само четем позициите, после само сменяме класове. Ако се редуват,
+    // браузърът преизчислява разположението на страницата за всеки елемент.
     var vh = window.innerHeight;
-    document.querySelectorAll('[data-reveal]').forEach(function (el) {
-      // Каквото вече се вижда при зареждане, остава видимо веднага.
-      if (el.getBoundingClientRect().top < vh * 0.9) return;
+    var below = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'))
+      .filter(function (el) { return el.getBoundingClientRect().top >= vh * 0.9; });
+    // Каквото вече се вижда при зареждане, остава видимо веднага.
+    below.forEach(function (el) {
       el.classList.add('reveal-pending');
       io.observe(el);
     });
