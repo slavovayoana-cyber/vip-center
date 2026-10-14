@@ -31,6 +31,8 @@
   "description": "Автомивка в Стара Загора: външно и вътрешно почистване на автомобили и пране на салон.",
   "telephone": "+359898781205",
   "priceRange": "€€",
+  "paymentAccepted": "Cash",
+  "currenciesAccepted": "EUR",
   "makesOffer": [
     { "@type": "Offer", "name": "Пълна програма — лек автомобил", "price": "25", "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Пълна програма — джип или ван", "price": "28", "priceCurrency": "EUR" }
@@ -43,7 +45,7 @@
   },
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:30", "closes": "17:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:30" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "16:00" }
   ]
 }
 </script>
@@ -86,10 +88,18 @@
     },
     {
       "@type": "Question",
+      "name": "Как се плаща?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Само в брой."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Работите ли в неделя?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Не. Работим от понеделник до петък от 08:30 до 17:30 и в събота от 09:00 до 17:30. Неделя е почивен ден."
+        "text": "Не. Работим от понеделник до петък от 08:30 до 17:30 и в събота от 09:00 до 16:00. Неделя е почивен ден."
       }
     },
     {
@@ -295,7 +305,10 @@
             <span class="price-value"><span class="price-amount">28</span><span class="price-currency">€</span></span>
           </div>
         </div>
-        <p class="program-time"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Около 50 минути</p>
+        <div class="program-meta">
+          <p class="program-time"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Около 50 минути</p>
+          <p class="program-time"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/></svg> Плащане само в брой</p>
+        </div>
         <a href="tel:+359898781205" class="btn btn-primary btn-lg">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
           Запази час
@@ -507,8 +520,12 @@
         <div class="faq-answer"><p>Да. Прането на салона (седалки, тапицерия, таван и стелки) е допълнителна услуга. Цената зависи от автомобила, затова се обадете на <a href="tel:+359898781205">089 878 1205</a> за оферта.</p></div>
       </details>
       <details class="faq-item" data-reveal>
+        <summary>Как се плаща?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Само в брой.</p></div>
+      </details>
+      <details class="faq-item" data-reveal>
         <summary>Работите ли в неделя?<span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-answer"><p>Не. Работим от понеделник до петък от 08:30 до 17:30 и в събота от 09:00 до 17:30. Неделя е почивен ден.</p></div>
+        <div class="faq-answer"><p>Не. Работим от понеделник до петък от 08:30 до 17:30 и в събота от 09:00 до 16:00. Неделя е почивен ден.</p></div>
       </details>
       <details class="faq-item" data-reveal>
         <summary>Къде се намирате?<span class="faq-icon" aria-hidden="true"></span></summary>
@@ -563,7 +580,7 @@
             <span class="open-status" id="open-status" hidden><span class="open-dot" aria-hidden="true"></span><span class="open-status-text"></span></span>
           </div>
           <div class="hours-row" data-day="weekday"><span class="hours-day">Понеделник – Петък</span><span class="hours-time">08:30 – 17:30</span></div>
-          <div class="hours-row" data-day="saturday"><span class="hours-day">Събота</span><span class="hours-time">09:00 – 17:30</span></div>
+          <div class="hours-row" data-day="saturday"><span class="hours-day">Събота</span><span class="hours-time">09:00 – 16:00</span></div>
           <div class="hours-row hours-row-closed" data-day="sunday"><span class="hours-day">Неделя</span><span class="hours-time">Почивен ден</span></div>
         </div>
         <div class="contact-actions">
@@ -602,7 +619,7 @@
       <div class="footer-col">
         <span class="footer-title">РАБОТНО ВРЕМЕ</span>
         <span>Пон – Пет: 08:30 – 17:30</span>
-        <span>Събота: 09:00 – 17:30</span>
+        <span>Събота: 09:00 – 16:00</span>
         <span>Неделя: почивен ден</span>
       </div>
       <div class="footer-col">

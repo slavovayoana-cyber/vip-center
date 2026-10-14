@@ -590,6 +590,7 @@ section { scroll-margin-top: 72px; }
 .price-amount { font-family: var(--font-display); font-size: clamp(44px, 5vw, 56px); font-weight: 700; line-height: 1; }
 .price-currency { font-size: 22px; font-weight: 700; color: var(--cyan-light); }
 
+.program-meta { display: flex; flex-direction: column; gap: 10px; }
 .program-time { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text-2); }
 .program-time svg { color: var(--cyan); flex: none; }
 
