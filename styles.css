@@ -401,8 +401,14 @@ section { scroll-margin-top: 72px; }
   padding-top: 6px;
   color: var(--muted);
   font-size: 14px;
+  align-items: flex-start;
 }
 .hero-facts > span { display: flex; align-items: center; gap: 8px; }
+.hero-address { display: flex; align-items: flex-start; gap: 8px; color: var(--text-2); font-weight: 600; line-height: 1.4; }
+.hero-address svg { flex: none; margin-top: 1px; color: var(--cyan); }
+.hero-address:hover { color: #FFFFFF; }
+.hero-address:hover > span { text-decoration: underline; text-underline-offset: 3px; }
+.hero-address-note { display: block; color: var(--muted); font-weight: 500; }
 .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); }
 
 .hero-visual { position: relative; }
