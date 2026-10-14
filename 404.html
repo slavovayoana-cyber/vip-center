@@ -6,19 +6,24 @@
 <title>Страницата не е намерена — VIP CLEANING CENTER</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0A0C0F">
+<script>
+  // Работи и на github.io/vip-center/, и на собствен домейн: всички пътища са спрямо основата на сайта.
+  document.write('<base href="' + (location.pathname.indexOf('/vip-center/') === 0 ? '/vip-center/' : '/') + '">');
+</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   @font-face {
     font-family: 'Unbounded';
     font-weight: 500 800;
     font-display: swap;
-    src: url(/vip-center/fonts/unbounded-cyrillic.woff2) format('woff2');
+    src: url(fonts/unbounded-cyrillic.woff2) format('woff2');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
   }
   @font-face {
     font-family: 'Unbounded';
     font-weight: 500 800;
     font-display: swap;
-    src: url(/vip-center/fonts/unbounded-latin.woff2) format('woff2');
+    src: url(fonts/unbounded-latin.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+2000-206F, U+20AC;
   }
   :root { --bg: #0A0C0F; --text: #EEF2F5; --muted: #9AA6B2; --cyan: #22C7E8; --cyan-light: #7FE3F5; --gold: #D4AF6A; --ink: #04131A; }
@@ -66,13 +71,9 @@
   <h1>Тази страница я няма</h1>
   <p>Може би линкът е грешен или страницата е преместена. Върнете се в началото или ни се обадете директно.</p>
   <div class="actions">
-    <a class="btn primary" id="home" href="/vip-center/">Към началото</a>
+    <a class="btn primary" href="./">Към началото</a>
     <a class="btn ghost" href="tel:+359898781205">089 878 1205</a>
   </div>
 </main>
-<script>
-  // Работи и на github.io/vip-center/, и на собствен домейн.
-  if (location.pathname.indexOf('/vip-center/') !== 0) document.getElementById('home').href = '/';
-</script>
 </body>
 </html>

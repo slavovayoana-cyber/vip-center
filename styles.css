@@ -145,7 +145,7 @@ section { scroll-margin-top: 72px; }
   font-weight: 700;
 }
 
-.section-head { display: flex; flex-direction: column; gap: 14px; max-width: 640px; }
+.section-head { display: flex; flex-direction: column; gap: 14px; max-width: 780px; }
 .section-head-center { align-items: center; text-align: center; max-width: none; }
 .section-head h2 { font-size: clamp(28px, 4vw, 46px); line-height: 1.1; font-weight: 700; }
 
@@ -257,7 +257,7 @@ section { scroll-margin-top: 72px; }
 .logo-sub-lg { font-size: 11px; margin-top: 6px; }
 
 .nav-desktop { display: flex; align-items: center; gap: 28px; }
-.nav-desktop > a:not(.btn-pill) { color: var(--text-3); font-size: 14px; font-weight: 600; }
+.nav-desktop > a:not(.btn-pill) { padding: 9px 0; color: var(--text-3); font-size: 14px; font-weight: 600; }
 .nav-desktop > a:not(.btn-pill):hover { color: #FFFFFF; }
 
 .menu-toggle {
@@ -842,7 +842,7 @@ section { scroll-margin-top: 72px; }
 .half-head p { font-size: 15px; color: var(--muted); }
 .half-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 16px;
 }
 .half-card {
@@ -993,7 +993,7 @@ section { scroll-margin-top: 72px; }
   font-size: 15px;
 }
 .hours-day { color: var(--text-2); font-weight: 600; }
-.hours-time { color: var(--text); font-variant-numeric: tabular-nums; }
+.hours-time { color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .hours-row-closed .hours-time { color: var(--muted-2); }
 .hours-row.is-today { background: rgba(34, 199, 232, 0.08); }
 .hours-row.is-today:not(.hours-row-closed) .hours-time { color: var(--cyan-light); }
@@ -1006,8 +1006,26 @@ section { scroll-margin-top: 72px; }
   border-radius: 26px;
   overflow: hidden;
   border: 1px solid var(--line);
-  background: var(--surface);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
+    var(--surface);
 }
+.map-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  color: var(--text-2);
+  font-weight: 700;
+}
+.map-fallback svg { color: var(--cyan); }
+.map-fallback:hover { color: #FFFFFF; }
 .map-card iframe {
   position: absolute;
   inset: 0;
@@ -1087,7 +1105,7 @@ section { scroll-margin-top: 72px; }
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -9px;
+  bottom: 0;
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -1202,7 +1220,7 @@ section { scroll-margin-top: 72px; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
   gap: 16px;
 }
 
@@ -1222,7 +1240,7 @@ section { scroll-margin-top: 72px; }
   top: 16px;
   right: 22px;
   font-family: var(--font-display);
-  font-size: 76px;
+  font-size: clamp(52px, 5.6vw, 76px);
   font-weight: 800;
   line-height: 1;
   background: linear-gradient(180deg, rgba(127, 227, 245, 0.24), rgba(127, 227, 245, 0));
@@ -1502,6 +1520,14 @@ section { scroll-margin-top: 72px; }
   .footer-bottom { padding-right: 64px; } /* място за плаващия бутон "нагоре" */
   .footer-bottom .footer-link-muted { display: none; } /* плаващият бутон го замества */
   .faq-head { position: sticky; top: 110px; }
+}
+
+@media (min-width: 900px) and (max-width: 1240px) {
+  .hero h1 { font-size: 5.2vw; }
+}
+
+@media (min-width: 561px) and (max-width: 979px) {
+  .photo-hero { aspect-ratio: 4 / 3; }
 }
 
 @media (max-width: 560px) {
