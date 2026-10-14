@@ -1,6 +1,6 @@
 # VIP CLEANING CENTER — уебсайт
 
-Едностраничен сайт за автомивка VIP CLEANING CENTER, Стара Загора.
+Едностраничен сайт за автомивка VIP CLEANING CENTER, Стара Загора: **https://avtomivka.vip**
 Чист HTML/CSS/JS без build стъпка: хоства се директно от GitHub Pages.
 
 ## Файлове
@@ -31,35 +31,37 @@ python3 -m http.server 8000
 
 Settings → Pages → Build and deployment → Source: **Deploy from a branch**,
 Branch: **main**, папка **/ (root)** → Save.
-След около минута сайтът е на `https://slavovayoana-cyber.github.io/vip-center/`.
+Сайтът е на `https://avtomivka.vip` (`https://slavovayoana-cyber.github.io/vip-center/` пренасочва натам).
 Всеки push в `main` обновява сайта автоматично.
 
-## Собствен домейн
+## Собствен домейн: avtomivka.vip (Namecheap)
 
-1. **DNS при регистратора** (където е купен домейнът). Изтрийте старите A/AAAA/CNAME записи
-   за `@` и `www` (например паркинг страница на регистратора) и добавете:
+1. **Namecheap** → Domain List → `avtomivka.vip` → Manage:
+   - Nameservers: **Namecheap BasicDNS**.
+   - Advanced DNS → Host Records: изтрийте паркинг записите (`URL Redirect` за `@` и
+     `CNAME` `www` → `parkingpage.namecheap.com`) и добавете:
 
-   | Тип | Име (Host) | Стойност |
-   | --- | --- | --- |
-   | A | `@` | `185.199.108.153` |
-   | A | `@` | `185.199.109.153` |
-   | A | `@` | `185.199.110.153` |
-   | A | `@` | `185.199.111.153` |
-   | CNAME | `www` | `slavovayoana-cyber.github.io` |
+   | Type | Host | Value | TTL |
+   | --- | --- | --- | --- |
+   | A Record | `@` | `185.199.108.153` | Automatic |
+   | A Record | `@` | `185.199.109.153` | Automatic |
+   | A Record | `@` | `185.199.110.153` | Automatic |
+   | A Record | `@` | `185.199.111.153` | Automatic |
+   | CNAME Record | `www` | `slavovayoana-cyber.github.io.` | Automatic |
 
-   По желание и IPv6 (AAAA за `@`): `2606:50c0:8000::153`, `2606:50c0:8001::153`,
-   `2606:50c0:8002::153`, `2606:50c0:8003::153`.
-2. **GitHub:** Settings → Pages → Custom domain → домейнът (без `www`) → Save.
-   GitHub проверява DNS. Промените по DNS може да отнемат от минути до няколко часа.
-3. Щом проверката мине, отметнете **Enforce HTTPS** (сертификатът се издава автоматично,
+   TXT записът `v=spf1 include:spf.efwd.registrar-servers.com ~all` е за пренасочване на
+   имейли от Namecheap и може да остане.
+2. **GitHub** → това хранилище → Settings → Pages → Custom domain: `avtomivka.vip` → Save.
+   GitHub добавя файл `CNAME` в `main`.
+3. Щом DNS проверката мине, отметнете **Enforce HTTPS** (сертификатът идва автоматично,
    обикновено до час).
 4. **Пазене на домейна (препоръчително):** профилът в GitHub → Settings → Pages →
-   Add a domain → добавете TXT записа, който GitHub показва, при регистратора.
-5. **В кода** сменете `https://slavovayoana-cyber.github.io/vip-center/` с новия адрес
-   в `index.html` (canonical, og:url, og:image, JSON-LD) и в `sitemap.xml`, и добавете `robots.txt`.
-   `404.html` работи и на двата адреса без промяна.
-6. **След това:** сложете новия адрес в Google Business профила и във Facebook страницата,
-   и добавете сайта в Google Search Console с `sitemap.xml`.
+   Add a domain → `avtomivka.vip` → добавете показания TXT запис в Namecheap
+   (Host: `_github-pages-challenge-slavovayoana-cyber`) → Verify.
+5. Адресите в кода (`canonical`, `og:url`, `og:image`, JSON-LD, `sitemap.xml`, `robots.txt`)
+   са `https://avtomivka.vip/`. `404.html` работи и на двата адреса.
+6. **След това:** сложете `avtomivka.vip` в Google Business профила и във Facebook страницата,
+   и добавете сайта в Google Search Console с `https://avtomivka.vip/sitemap.xml`.
 
 ## Какво още трябва от клиента
 
@@ -74,4 +76,4 @@ Branch: **main**, папка **/ (root)** → Save.
 - [x] Ванът е на цената на джипа (28 €).
 - [ ] Цени: сега 25 € (лек автомобил) / 28 € (джип или ван). Клиентът каза, че по-късно може да станат 28 / 33 €
       (както е на табелото). Сменят се в ценоразписа, във „Въпроси“, в „Защо нас“ и в JSON-LD в `index.html`.
-- [ ] Домейн: купен. Настройва се по стъпките в „Собствен домейн“ по-горе.
+- [ ] Домейн `avtomivka.vip`: DNS в Namecheap и Custom domain в GitHub (стъпките по-горе).
