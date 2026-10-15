@@ -102,7 +102,7 @@
   --font-display: 'Unbounded', 'Unbounded Fallback', sans-serif;
   --font-body: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
 
-  --section-pad: clamp(64px, 9vw, 120px);
+  --section-pad: clamp(56px, 6vw, 84px);
 }
 
 /* ---------- Base ---------- */
