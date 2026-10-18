@@ -411,6 +411,13 @@ section { scroll-margin-top: 72px; }
 .g-badge-lg { width: 36px; height: 36px; font-size: 16px; }
 
 .hero-heading { display: flex; flex-direction: column; gap: 18px; }
+/* Надписът "Автомивка Стара Загора" е част от заглавието (за Google), но изглежда като преди. */
+.hero h1 .hero-eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-family: var(--font-body);
+  line-height: normal;
+}
 
 .hero h1 {
   font-size: clamp(38px, 6.4vw, 72px);

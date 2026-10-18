@@ -63,6 +63,23 @@ Branch: **main**, папка **/ (root)** → Save.
 6. **След това:** сложете `avtomivka.vip` в Google Business профила и във Facebook страницата,
    и добавете сайта в Google Search Console с `https://avtomivka.vip/sitemap.xml`.
 
+## SEO: за „автомивка Стара Загора“
+
+В сайта: заглавие и описание с „Автомивка Стара Загора“, H1 с ключовата фраза, JSON-LD
+`AutoWash` (адрес, координати 42.4205, 25.6325 — паркинг на хотел „Железник“, работно време,
+цени, Facebook, старото име CLEANSING VIP CENTER като `alternateName`), FAQ данни,
+`sitemap.xml`, `robots.txt`, Lighthouse SEO 100.
+
+Извън сайта (това решава класирането в Google Maps и „местните“ резултати):
+1. **Google Search Console** → Add property → Domain `avtomivka.vip` → TXT запис в Namecheap
+   (Advanced DNS, Host `@`) → Verify → Sitemaps: `https://avtomivka.vip/sitemap.xml` →
+   URL Inspection → `https://avtomivka.vip/` → Request indexing.
+2. **Google Business профил** (business.google.com): Уебсайт `https://avtomivka.vip`,
+   основна категория „Автомивка“, точен пин, работно време (събота до 16:00), снимки,
+   отговори на отзивите. Името трябва да съвпада с табелата.
+3. Същото име, адрес и телефон навсякъде (сайт, Google, Facebook, каталози).
+4. Нови отзиви в Google: молба към доволни клиенти (линк „Напишете отзив“ от профила).
+
 ## Какво още трябва от клиента
 
 - [x] Снимки „преди / след“ от работата на Мария са в `images/results/` (секция „Преди / След“).
